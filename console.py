@@ -20,6 +20,5 @@ instructional_event_repository.save(instructional_event3)
 
 instructional_event_repository.add_member(instructional_event1, member1)
 
-instructional_events = instructional_event_repository.select_all_upcoming()
-for instructional_event in instructional_events:
-    print(instructional_event.__dict__)
+member1.gender = "Female"
+member_repository.update(member1)

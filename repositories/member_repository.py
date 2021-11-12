@@ -5,7 +5,8 @@ def save(member):
     sql = """INSERT INTO members (first_name, last_name, dob, email, gender)
              VALUES (%(first_name)s, %(last_name)s, %(dob)s, %(email)s, %(gender)s)
              RETURNING *"""
-    values = {'first_name': member.first_name, 
+    values = {
+              'first_name': member.first_name, 
               'last_name': member.last_name,
               'dob': member.dob,
               'email': member.email,
@@ -22,4 +23,18 @@ def select(id):
     if result is not None:
         member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], id)
     return member
+
+def update(member):
+    sql = """UPDATE members SET (first_name, last_name, dob, email, gender)
+             = (%(first_name)s, %(last_name)s, %(dob)s, %(email)s, %(gender)s)
+             WHERE id = %(id)s"""
+    values = {
+              'first_name': member.first_name, 
+              'last_name': member.last_name,
+              'dob': member.dob,
+              'email': member.email,
+              'gender': member.gender,
+              'id': member.id
+              }
+    run_sql(sql, values)
 
