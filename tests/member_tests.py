@@ -31,7 +31,6 @@ class TestMember(unittest.TestCase):
     def test_member2_has_id(self):
         self.assertEqual(1, self.member2.id)
 
-    @unittest.skip('')
     def test_full_name(self):
         self.assertEqual("Augusta Eldrick", self.member1.full_name())
         self.assertEqual("Rashad Yewande", self.member2.full_name())
