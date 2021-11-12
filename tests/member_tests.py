@@ -10,7 +10,6 @@ class TestMember(unittest.TestCase):
     def test_member1_has_first_name(self):
         self.assertEqual("Augusta", self.member1.first_name)
 
-    @unittest.skip('')
     def test_member1_has_last_name(self):
         self.assertEqual("Eldrick", self.member1.last_name)
 
