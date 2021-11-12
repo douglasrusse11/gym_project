@@ -18,5 +18,6 @@ instructional_event_repository.save(instructional_event2)
 
 instructional_event_repository.add_member(instructional_event1, member1)
 
-member = member_repository.select(1)
-print(member.__dict__)
+members = instructional_event_repository.members(instructional_event2)
+for member in members:
+    print(member.__dict__)
