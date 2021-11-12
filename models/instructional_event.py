@@ -3,3 +3,4 @@ class InstructionalEvent:
         self.name = name
         self.time = time
         self.duration = duration
+        self.members = []

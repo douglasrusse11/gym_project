@@ -18,7 +18,6 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_instructional_event1_has_duration(self):
         self.assertEqual(90, self.instructional_event1.duration)
 
-    @unittest.skip('')
     def test_instructional_event1_members_is_empty_list(self):
         self.assertEqual([], self.instructional_event1.members)
 
