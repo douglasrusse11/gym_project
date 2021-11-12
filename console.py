@@ -17,3 +17,6 @@ instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12,
 instructional_event_repository.save(instructional_event2)
 
 instructional_event_repository.add_member(instructional_event1, member1)
+
+member = member_repository.select(1)
+print(member.__dict__)

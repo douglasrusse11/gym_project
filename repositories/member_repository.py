@@ -14,3 +14,12 @@ def save(member):
     result = run_sql(sql, values)[0]
     member.id = result["id"]
 
+def select(id):
+    member = None
+    sql = "SELECT * FROM members WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], id)
+    return member
+
