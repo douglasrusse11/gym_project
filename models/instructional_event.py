@@ -1,2 +1,3 @@
 class InstructionalEvent:
-    pass
+    def __init__(self, name, time, duration, members=None, id=None):
+        self.name = name

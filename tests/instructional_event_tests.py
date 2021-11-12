@@ -9,7 +9,6 @@ class TestInstructionalEvent(unittest.TestCase):
         self.member = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, [self.member], 1)
 
-    @unittest.skip('')
     def test_instructional_event1_has_name(self):
         self.assertEqual("Yoga", self.instructional_event1.name)
 
