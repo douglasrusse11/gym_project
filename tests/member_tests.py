@@ -22,7 +22,6 @@ class TestMember(unittest.TestCase):
     def test_member1_gender_is_None(self):
         self.assertIsNone(self.member1.gender)
 
-    @unittest.skip('')
     def test_member1_id_is_None(self):
         self.assertIsNone(self.member1.id)
 

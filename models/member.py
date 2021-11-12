@@ -5,3 +5,4 @@ class Member:
         self.dob = dob
         self.email = email
         self.gender = None
+        self.id = None
