@@ -13,7 +13,6 @@ class TestMember(unittest.TestCase):
     def test_member1_has_last_name(self):
         self.assertEqual("Eldrick", self.member1.last_name)
 
-    @unittest.skip('')
     def test_member1_has_dob(self):
         self.assertEqual(date(1997, 5, 19), self.member1.dob)
 
