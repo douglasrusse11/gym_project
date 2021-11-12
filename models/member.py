@@ -4,3 +4,4 @@ class Member:
         self.last_name = last_name
         self.dob = dob
         self.email = email
+        self.gender = None

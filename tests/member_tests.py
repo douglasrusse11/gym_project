@@ -19,7 +19,6 @@ class TestMember(unittest.TestCase):
     def test_member1_has_email(self):
         self.assertEqual("crobles@yahoo.ca", self.member1.email)
 
-    @unittest.skip('')
     def test_member1_gender_is_None(self):
         self.assertIsNone(self.member1.gender)
 
