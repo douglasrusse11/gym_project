@@ -21,5 +21,6 @@ instructional_event_repository.save(instructional_event3)
 instructional_event_repository.add_member(instructional_event1, member1)
 
 instructional_event3.duration = 120
-instructional_event3.members = []
+instructional_event3.members = [member2]
 instructional_event_repository.update(instructional_event3)
+instructional_event_repository.remove_members(instructional_event3)

@@ -54,6 +54,11 @@ def select_all_upcoming():
             instructional_events.append(instructional_event)
     return instructional_events
 
+def remove_members(instructional_event):
+    sql = "DELETE FROM gym WHERE instructional_event_id = %s"
+    values = [instructional_event.id]
+    run_sql(sql, values)
+
 def update(instructional_event):
     sql = """UPDATE instructional_events SET (name, time, duration)
              = (%(name)s, %(time)s, %(duration)s) WHERE id = %(id)s"""
