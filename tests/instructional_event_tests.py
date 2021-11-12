@@ -21,7 +21,6 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_instructional_event1_members_is_empty_list(self):
         self.assertEqual([], self.instructional_event1.members)
 
-    @unittest.skip('')
     def test_instructional_event1_id_is_None(self):
         self.assertIsNone(self.instructional_event1.id)
 
