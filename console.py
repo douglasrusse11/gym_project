@@ -15,3 +15,5 @@ instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 12, 18), 90
 instructional_event_repository.save(instructional_event1)
 instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, [member1, member2], 1)
 instructional_event_repository.save(instructional_event2)
+
+instructional_event_repository.add_member(instructional_event1, member1)

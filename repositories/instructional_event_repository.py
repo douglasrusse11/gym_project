@@ -12,3 +12,11 @@ def save(instructional_event):
               }
     result = run_sql(sql, values)[0]
     instructional_event.id = result["id"]
+
+def add_member(instructional_event, member):
+    sql = """INSERT INTO gym (member_id, instructional_event_id)
+             VALUES (%(member_id)s, %(instructional_event_id)s)"""
+    values = {'member_id': member.id,
+              'instructional_event_id': instructional_event.id
+              }
+    run_sql(sql, values)
