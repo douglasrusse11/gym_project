@@ -30,7 +30,6 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_instructional_event2_has_id(self):
         self.assertEqual(1, self.instructional_event2.id)
 
-    @unittest.skip('')
     def test_end_time(self):
         self.assertEqual(datetime(2021, 11, 12, 19, 30), self.instructional_event1.end_time())
         self.assertEqual(datetime(2021, 11, 12, 20), self.instructional_event2.end_time())
