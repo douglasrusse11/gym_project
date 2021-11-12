@@ -28,7 +28,6 @@ class TestMember(unittest.TestCase):
     def test_member2_has_gender(self):
         self.assertEqual("Male", self.member2.gender)
 
-    @unittest.skip('')
     def test_member2_has_id(self):
         self.assertEqual(1, self.member2.id)
 
