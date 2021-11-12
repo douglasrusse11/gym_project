@@ -69,3 +69,7 @@ def update(instructional_event):
               'id': instructional_event.id
               }
     run_sql(sql, values)
+    remove_members(instructional_event)
+    for member in instructional_event.members:
+        add_member(instructional_event, member)
+
