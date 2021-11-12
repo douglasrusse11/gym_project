@@ -16,7 +16,6 @@ class TestMember(unittest.TestCase):
     def test_member1_has_dob(self):
         self.assertEqual(date(1997, 5, 19), self.member1.dob)
 
-    @unittest.skip('')
     def test_member1_has_email(self):
         self.assertEqual("crobles@yahoo.ca", self.member1.email)
 
