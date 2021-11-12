@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.instructional_event import InstructionalEvent
 from repositories import member_repository
+from datetime import datetime
 
 def save(instructional_event):
     sql = """INSERT INTO instructional_events (name, time, duration)
@@ -41,3 +42,15 @@ def members(instructional_event):
             member = member_repository.select(result["id"])
             members.append(member)
     return members
+
+def select_all_upcoming():
+    instructional_events = []
+    sql = "SELECT * FROM instructional_events WHERE time > %s"
+    values = [datetime.now()]
+    results = run_sql(sql, values)
+    if results is not None:
+        for result in results:
+            instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], id=result["id"])
+            instructional_event.members = members(instructional_event)
+            instructional_events.append(instructional_event)
+    return instructional_events
