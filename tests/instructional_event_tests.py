@@ -27,7 +27,6 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_instructional_event2_has_members(self):
         self.assertGreater(len(self.instructional_event2.members), 0)
 
-    @unittest.skip('')
     def test_instructional_event2_has_id(self):
         self.assertEqual(1, self.instructional_event2.id)
 
