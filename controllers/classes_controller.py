@@ -7,3 +7,8 @@ classes_blueprint = Blueprint('classes', __name__)
 def show_all():
     instructional_events = instructional_event_repository.select_all_upcoming()
     return render_template("classes/show_all_upcoming.html", instructional_events=instructional_events)
+
+@classes_blueprint.route('/classes/<id>')
+def show(id):
+    instructional_event = instructional_event_repository.select(id)
+    return f"{instructional_event.__dict__}"
