@@ -24,6 +24,5 @@ instructional_event3.duration = 120
 instructional_event3.members = [member2]
 instructional_event_repository.update(instructional_event3)
 instructional_events = instructional_event_repository.select_all_upcoming()
-instructional_events.sort(key=instructional_event_repository.sort_by_time_key)
 for instructional_event in instructional_events:
     print(instructional_event.__dict__)

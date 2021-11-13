@@ -52,6 +52,7 @@ def select_all_upcoming():
             instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], id=result["id"])
             instructional_event.members = members(instructional_event)
             instructional_events.append(instructional_event)
+    instructional_events.sort(key=sort_by_time_key)
     return instructional_events
 
 def remove_members(instructional_event):
