@@ -20,9 +20,7 @@ instructional_event_repository.save(instructional_event3)
 
 instructional_event_repository.add_member(instructional_event1, member1)
 
-instructional_event3.duration = 120
-instructional_event3.members = [member2]
-instructional_event_repository.update(instructional_event3)
-instructional_events = instructional_event_repository.select_all_upcoming()
-for instructional_event in instructional_events:
-    print(instructional_event.__dict__)
+instructional_event = instructional_event_repository.select(instructional_event1.id)
+print(instructional_event.__dict__)
+
+

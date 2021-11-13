@@ -77,3 +77,12 @@ def update(instructional_event):
 def sort_by_time_key(instructional_event):
     return instructional_event.time
 
+def select(id):
+    instructional_event = None
+    sql = "SELECT * FROM instructional_events WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], id=result["id"])
+        instructional_event.members = members(instructional_event)
+    return instructional_event
