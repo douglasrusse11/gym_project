@@ -73,3 +73,6 @@ def update(instructional_event):
     for member in instructional_event.members:
         add_member(instructional_event, member)
 
+def sort_by_time_key(instructional_event):
+    return instructional_event.time
+
