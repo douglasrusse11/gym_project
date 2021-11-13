@@ -74,7 +74,9 @@ main {
     flex-wrap: wrap;
 }
 
-.individual-container-heading {
+.individual-container-heading > a {
+    color: #ffffff;
+    text-decoration: none;
     display: flex;
 }
 
@@ -94,6 +96,7 @@ main {
     display: flex;
     align-items: center;
 }
+
 .class-name > .material-icons {
     font-size: 48px;
 }

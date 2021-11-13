@@ -5,16 +5,18 @@
     {% for instructional_event in instructional_events %}
         <div class="individual-container">
             <div class="individual-container-heading">
+                <a href="/classes/{{ instructional_event.id }}">
                 <span class="material-icons">
                     {% if instructional_event.name == 'Yoga' %}
-                    self_improvement
+                        self_improvement
                     {% elif instructional_event.name == 'Martial Arts' %}
-                    sports_martial_arts
+                        sports_martial_arts
                     {% else %} 
-                    sports
+                        sports
                     {% endif %}
                 </span>
                 <h2>{{ instructional_event.name }}</h2>
+                </a>
             </div>
             <hr>
             <div class="individual-container-details">
