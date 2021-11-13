@@ -50,6 +50,10 @@ main {
     border-radius: 20px;
 }
 
+.multi-container {
+    width: 80%;
+}
+
 footer {
     background-color: #000000;
     flex: 0 0 50px;
