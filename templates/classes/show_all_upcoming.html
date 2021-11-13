@@ -1,0 +1,11 @@
+{% extends "multi-container.html" %}
+
+{% block multi_container %}
+<section class="classes">
+    {% for instructional_event in instructional_events %}
+        <div>
+            <p>{{instructional_event.__dict__}}</p>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}
