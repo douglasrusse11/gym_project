@@ -3,8 +3,16 @@
 {% block multi_container %}
 <section class="classes">
     {% for instructional_event in instructional_events %}
-        <div>
-            <p>{{instructional_event.__dict__}}</p>
+        <div class="individual-container">
+            <div class="individual-container-heading">
+                <span class="material-icons">sports</span>
+                <h2>{{ instructional_event.name }}</h2>
+            </div>
+            <hr>
+            <div class="individual-container-details">
+                <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+                <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+            </div>
         </div>
     {% endfor %}
 </section>

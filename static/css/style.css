@@ -19,6 +19,10 @@ h1 {
     font-size: 24px;
 }
 
+h2 {
+    font-size: 20px;
+}
+
 header > nav > ul {
     display: flex;
     margin: 0px;
@@ -54,7 +58,34 @@ main {
     width: 80%;
 }
 
+.individual-container {
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 10px;
+    width: 20%;
+    padding: 10px;
+    margin: 10px;
+}
+
+.classes {
+    display: flex;
+    flex-wrap: wrap;
+}
+.individual-container-heading {
+    display: flex;
+}
+
+.individual-container-details {
+    display: flex;
+    justify-content: space-between;
+}
+
 footer {
     background-color: #000000;
     flex: 0 0 50px;
+}
+
+.material-icons {
+    color: #c4c4c4;
+    margin-right: 10px;
 }
