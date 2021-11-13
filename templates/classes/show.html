@@ -1,5 +1,31 @@
 {% extends "single-container.html" %}
 
 {% block single_container %}
-<p>{{ instructional_event.__dict__ }}</p>
+<div class="class-heading">
+    <div class="class-name">
+        <span class="material-icons">
+            {% if instructional_event.name == 'Yoga' %}
+                self_improvement
+            {% elif instructional_event.name == 'Martial Arts' %}
+                sports_martial_arts
+            {% else %} 
+                sports
+            {% endif %}
+        </span>
+        <h2>{{ instructional_event.name }}</h2>
+    </div>
+    <div class="class-details">
+        <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+        <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+    </div>
+</div>
+<hr class="class-separator">
+<div class="class-members">
+    {% for member in instructional_event.members %}
+        <div class="class-member">
+            <span class="material-icons">person</span>
+            <p>{{ member.first_name }}</p>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

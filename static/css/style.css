@@ -53,6 +53,7 @@ main {
     width: 60%;
     height: 400px;
     border-radius: 20px;
+    padding: 50px;
 }
 
 .multi-container {
@@ -72,6 +73,7 @@ main {
     display: flex;
     flex-wrap: wrap;
 }
+
 .individual-container-heading {
     display: flex;
 }
@@ -79,6 +81,39 @@ main {
 .individual-container-details {
     display: flex;
     justify-content: space-between;
+}
+
+.class-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60%;
+}
+
+.class-name {
+    display: flex;
+    align-items: center;
+}
+.class-name > .material-icons {
+    font-size: 48px;
+}
+
+.class-members {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.class-member {
+    color: #000000;
+    background-color: #c4c4c4;
+    border-radius: 10px;
+    margin-right: 10px;
+    width: 20%;
+    display: flex;
+}
+
+.class-member > .material-icons {
+    color: #8a8989;
 }
 
 footer {
