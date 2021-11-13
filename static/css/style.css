@@ -111,7 +111,9 @@ main {
     background-color: #c4c4c4;
     border-radius: 10px;
     margin-right: 10px;
-    width: 20%;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    width: 120px;
     display: flex;
 }
 
