@@ -11,4 +11,4 @@ def show_all():
 @classes_blueprint.route('/classes/<id>')
 def show(id):
     instructional_event = instructional_event_repository.select(id)
-    return f"{instructional_event.__dict__}"
+    return render_template("classes/show.html", instructional_event=instructional_event)
