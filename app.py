@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from controllers.classes_controller import classes_blueprint
 from controllers.members_controller import members_blueprint
 
@@ -8,7 +8,7 @@ app.register_blueprint(members_blueprint)
 
 @app.route('/')
 def index():
-    return "Hello, World!"
+    return render_template("base.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
