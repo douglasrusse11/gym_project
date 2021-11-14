@@ -28,4 +28,4 @@ def add_member():
 @members_blueprint.route('/members/<id>/edit')
 def edit_member(id):
     member = member_repository.select(id)
-    return f"Edit Member: {member.__dict__}"
+    return render_template("members/edit.html", member=member)
