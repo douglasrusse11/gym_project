@@ -1,8 +1,42 @@
 {% extends "single-container.html" %}
 
 {% block single_container %}
-<p>{{ instructional_event.__dict__ }}</p>
-{% for member in members %}
-<p>{{ member.__dict__ }}</p>
-{% endfor %}
+<div class="class-heading">
+    <div class="class-name">
+        <span class="material-icons">
+            {% if instructional_event.name == 'Yoga' %}
+                self_improvement
+            {% elif instructional_event.name == 'Martial Arts' %}
+                sports_martial_arts
+            {% else %} 
+                sports
+            {% endif %}
+        </span>
+        <h2>{{ instructional_event.name }}</h2>
+        <h3><a href="/classes/{{ instructional_event.id }}/edit"><span class="material-icons">edit</span></a></h3>
+    </div>
+    <div class="class-details">
+        <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+        <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+    </div>
+</div>
+<hr class="class-separator">
+<div class="booking-form form">
+    <h2 class="form-heading">Book Class</h2>
+    <form action="/classes/{{ instructional_event.id }}/book" method="post">
+        <div class="form-attributes">
+            <div class="form-attribute">
+                <label for="member">Name:</label>
+                <select name="member" id="member">
+                    {% for member in members %}
+                        <option value="{{ member.id }}">{{ member.full_name() }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="Book">
+        </div>
+    </form>
+</div>
 {% endblock %}

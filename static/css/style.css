@@ -160,6 +160,10 @@ main {
     height: 300px;
 }
 
+.booking-form {
+    height: 100px;
+}
+
 .form > form {
     display: flex;
     flex-direction: column;
