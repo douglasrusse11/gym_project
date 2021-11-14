@@ -74,7 +74,12 @@ main {
     flex-wrap: wrap;
 }
 
-.individual-container-heading > a {
+.individual-container-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.individual-container-name > a {
     color: #ffffff;
     text-decoration: none;
     display: flex;
