@@ -27,6 +27,11 @@ def show(id):
     instructional_event = instructional_event_repository.select(id)
     return render_template("classes/show.html", instructional_event=instructional_event)
 
+@classes_blueprint.route('/classes/<id>', methods=["POST"])
+def update_class(id):
+    print(id, request.form)
+    return "Class has been updated"
+
 @classes_blueprint.route('/classes/new')
 def add_class():
     return render_template("/classes/new.html")
