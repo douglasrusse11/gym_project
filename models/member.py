@@ -9,3 +9,6 @@ class Member:
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+    def __eq__(self, other):
+        return self.id == other.id
