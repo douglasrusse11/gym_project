@@ -38,3 +38,17 @@ def update(member):
               }
     run_sql(sql, values)
 
+def select_all():
+    members = []
+    sql = "SELECT * FROM members"
+    results = run_sql(sql)
+    for result in results:
+        first_name = result["first_name"]
+        last_name = result["last_name"]
+        dob = result["dob"]
+        email = result["email"]
+        gender = result["gender"]
+        id = result["id"]
+        member = Member(first_name, last_name, dob, email, gender, id)
+        members.append(member)
+    return members
