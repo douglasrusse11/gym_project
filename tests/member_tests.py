@@ -6,6 +6,7 @@ class TestMember(unittest.TestCase):
     def setUp(self):
         self.member1 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.member2 = Member("Rashad", "Yewande", date(1972, 8, 4), "nogin@icloud.com", "Male", 1)
+        self.member3 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
 
     def test_member1_has_first_name(self):
         self.assertEqual("Augusta", self.member1.first_name)
@@ -34,3 +35,6 @@ class TestMember(unittest.TestCase):
     def test_full_name(self):
         self.assertEqual("Augusta Eldrick", self.member1.full_name())
         self.assertEqual("Rashad Yewande", self.member2.full_name())
+
+    def test_member_equality(self):
+        self.assertEqual(self.member1, self.member3)
