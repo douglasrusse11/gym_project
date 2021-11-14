@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect
 from repositories import instructional_event_repository
+from models.instructional_event import InstructionalEvent
+from datetime import datetime
 
 classes_blueprint = Blueprint('classes', __name__)
 
@@ -10,7 +12,14 @@ def show_all():
 
 @classes_blueprint.route('/classes', methods=["POST"])
 def save_class():
-    print(request.form)
+    name = request.form["name"]
+    date, time = request.form["time"].split('T')
+    year, month, day = (int(element) for element in date.split('-'))
+    hour, minute = (int(element) for element in time.split(':'))
+    time = datetime(year, month, day, hour, minute)
+    duration = request.form["duration"]
+    instructional_event = InstructionalEvent(name, time, duration)
+    instructional_event_repository.save(instructional_event)
     return redirect('/classes')
 
 @classes_blueprint.route('/classes/<id>')
