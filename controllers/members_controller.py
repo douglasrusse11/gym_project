@@ -24,3 +24,8 @@ def save_member():
 @members_blueprint.route('/members/new')
 def add_member():
     return render_template("members/new.html")
+
+@members_blueprint.route('/members/<id>/edit')
+def edit_member(id):
+    member = member_repository.select(id)
+    return f"Edit Member: {member.__dict__}"
