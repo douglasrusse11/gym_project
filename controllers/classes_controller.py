@@ -29,8 +29,15 @@ def show(id):
 
 @classes_blueprint.route('/classes/<id>', methods=["POST"])
 def update_class(id):
-    print(id, request.form)
-    return "Class has been updated"
+    instructional_event = instructional_event_repository.select(id)
+    instructional_event.name = request.form["name"]
+    date, time = request.form["time"].split('T')
+    year, month, day = (int(element) for element in date.split('-'))
+    hour, minute = (int(element) for element in time.split(':'))
+    instructional_event.time = datetime(year, month, day, hour, minute)
+    instructional_event.duration = request.form["duration"]
+    instructional_event_repository.update(instructional_event)
+    return redirect(f'/classes/{id}')
 
 @classes_blueprint.route('/classes/new')
 def add_class():
