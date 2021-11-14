@@ -243,4 +243,12 @@ footer {
     .form-button {
         margin-top: 10px;
     }
+
+    .multi-container {
+        width: 100%;
+    }
+
+    .individual-container {
+        width: 95%;
+    }
 }
