@@ -121,6 +121,48 @@ main {
     color: #8a8989;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+}
+
+.form > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-heading {
+    flex: 0 0 initial;
+}
+
+.form-attributes {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+
+.form-attribute {
+    display: flex;
+    justify-content: space-between;
+    width: 344px;
+}
+
+.form-attribute > input {
+    width: 220.19px;
+    margin-left: 10px;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 initial;
+}
+
 footer {
     background-color: #000000;
     flex: 0 0 50px;

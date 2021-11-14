@@ -1,0 +1,26 @@
+{% extends "single-container.html" %}
+
+{% block single_container %}
+<div class="form">
+    <h2 class="form-heading">Add Class</h2>
+    <form action="/classes" method="post">
+        <div class="form-attributes">
+            <div class="form-attribute">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Class Name">
+            </div>
+            <div class="form-attribute">
+                <label for="time">Time:</label>
+                <input type="datetime-local" name="time" id="time">
+            </div>
+            <div class="form-attribute">
+                <label for="duration">Duration (mins):</label>
+                <input type="number" name="duration" id="duration" placeholder="60">
+            </div>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="Add Class">
+        </div>
+    </form>
+</div>
+{% endblock %}

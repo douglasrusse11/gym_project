@@ -15,4 +15,4 @@ def show(id):
 
 @classes_blueprint.route('/classes/new')
 def add_class():
-    return "Add class here"
+    return render_template("/classes/new.html")
