@@ -25,6 +25,11 @@ def save_member():
 def add_member():
     return render_template("members/new.html")
 
+@members_blueprint.route('/members/<id>', methods=["POST"])
+def update_member(id):
+    print(id, request.form)
+    return "Member has been added"
+
 @members_blueprint.route('/members/<id>/edit')
 def edit_member(id):
     member = member_repository.select(id)
