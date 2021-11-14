@@ -27,7 +27,7 @@
         <div class="form-attributes">
             <div class="form-attribute">
                 <label for="member">Name:</label>
-                <select name="member" id="member">
+                <select name="member_id" id="member_id">
                     {% for member in members %}
                         <option value="{{ member.id }}">{{ member.full_name() }}</option>
                     {% endfor %}

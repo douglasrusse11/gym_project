@@ -54,3 +54,8 @@ def book_class(id):
     members = member_repository.select_all()
     eligible_members = [member for member in members if member not in instructional_event.members]
     return render_template("classes/book.html", instructional_event=instructional_event, members=eligible_members)
+
+@classes_blueprint.route('/classes/<id>/book', methods=["POST"])
+def add_member_to_class(id):
+    print(id, request.form)
+    return "Member added to class"
