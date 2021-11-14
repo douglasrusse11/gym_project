@@ -12,3 +12,7 @@ def show_all():
 def show(id):
     instructional_event = instructional_event_repository.select(id)
     return render_template("classes/show.html", instructional_event=instructional_event)
+
+@classes_blueprint.route('/classes/new')
+def add_class():
+    return "Add class here"
