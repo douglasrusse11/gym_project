@@ -69,7 +69,16 @@ main {
     margin: 10px;
 }
 
-.classes {
+.members > .individual-container {
+    width: 25%;
+}
+
+.members > .individual-container > .individual-container-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.classes, .members {
     display: flex;
     flex-wrap: wrap;
 }
@@ -82,6 +91,10 @@ main {
 .individual-container-name > a {
     color: #ffffff;
     text-decoration: none;
+    display: flex;
+}
+
+.individual-container-name {
     display: flex;
 }
 
@@ -130,13 +143,13 @@ main {
     color: #8a8989;
 }
 
-.add-class-button {
+.add-class-button, .add-member-button {
     display: flex;
     justify-content: end;
     padding: 10px;
 }
 
-.add-class-button > input {
+.add-class-button, .add-member-button > input {
     color: #ffffff;
     background-color: #000000;
     border-radius: 10px;

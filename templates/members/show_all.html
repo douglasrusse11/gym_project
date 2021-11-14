@@ -1,9 +1,26 @@
 {% extends "multi-container.html" %}
 
 {% block multi_container %}
-{% for member in members %}
-    <div class="individual-container">
-        <p>{{ member.__dict__ }}</p>
-    </div>
-{% endfor %}
+<section class="members">
+    {% for member in members %}
+        <div class="individual-container">
+            <div class="individual-container-heading">
+                <div class="individual-container-name">
+                    <span class="material-icons">person</span>
+                    <h2>{{ member.full_name() }}</h2>
+                </div>
+                <h3><a href="/members/{{ member.id }}/edit"><span class="material-icons">edit</span></a></h3>
+            </div>
+            <hr>
+            <div class="individual-container-details">
+                <p>{{ member.dob.__format__('%d/%m/%Y') }}</p>
+                <p>{{ member.email }}</p>
+                <p>{% if member.gender %}{{ member.gender }}{% else %}N/A{% endif %}</p>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+<form action="/members/new" class="add-member-button">
+    <input type="submit" value="Add Member">
+</form>
 {% endblock %}
