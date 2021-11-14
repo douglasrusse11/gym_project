@@ -20,7 +20,7 @@ def save_member():
     gender = None if request.form["gender"] == "" else request.form["gender"]
     member = Member(first_name, last_name, dob, email, gender)
     member_repository.save(member)
-    return "Member added"
+    return redirect('/members')
 
 @members_blueprint.route('/members/new')
 def add_member():
@@ -36,7 +36,7 @@ def update_member(id):
     member.email = request.form["email"]
     member.gender = None if request.form["gender"] == "" else request.form["gender"]
     member_repository.update(member)
-    return "Member has been added"
+    return redirect('/members')
 
 @members_blueprint.route('/members/<id>/edit')
 def edit_member(id):
