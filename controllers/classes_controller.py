@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-from repositories import instructional_event_repository
+from repositories import instructional_event_repository, member_repository
 from models.instructional_event import InstructionalEvent
 from datetime import datetime
 
@@ -47,3 +47,9 @@ def add_class():
 def edit_class(id):
     instructional_event = instructional_event_repository.select(id)
     return render_template("classes/edit.html", instructional_event=instructional_event)
+
+@classes_blueprint.route('/classes/<id>/book')
+def book_class(id):
+    instructional_event = instructional_event_repository.select(id)
+    members = member_repository.select_all()
+    return f"{instructional_event.__dict__} {[member.__dict__ for member in members]}"
