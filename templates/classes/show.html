@@ -29,4 +29,7 @@
         </div>
     {% endfor %}
 </div>
+<form action="/classes/{{ instructional_event.id }}/book" class="book-class-button">
+    <input type="submit" value="Book Class">
+</form>
 {% endblock %}
