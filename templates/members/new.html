@@ -1,5 +1,39 @@
 {% extends "single-container.html" %}
 
 {% block single_container %}
-<p>New Member Form goes here</p>
+<div class="form">
+    <h2 class="form-heading">Add Member</h2>
+    <form action="/members" method="post">
+        <div class="form-attributes">
+            <div class="form-attribute">
+                <label for="first-name">First Name:</label>
+                <input type="text" name="first-name" id="first-name" placeholder="First Name">
+            </div>
+            <div class="form-attribute">
+                <label for="last-name">Last Name:</label>
+                <input type="text" name="last-name" id="last-name" placeholder="Last Name">
+            </div>
+            <div class="form-attribute">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" name="dob" id="dob">
+            </div>
+            <div class="form-attribute">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="name@domain.com">
+            </div>
+            <div class="form-attribute">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" placeholder="">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="">Prefer not to say</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="Add Member">
+        </div>
+    </form>
+</div>
 {% endblock %}

@@ -175,7 +175,7 @@ main {
     width: 344px;
 }
 
-.form-attribute > input {
+.form-attribute > input, select {
     width: 220.19px;
     margin-left: 10px;
 }
