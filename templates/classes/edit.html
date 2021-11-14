@@ -1,5 +1,26 @@
 {% extends "single-container.html" %}
 
 {% block single_container %}
-<p>{{ instructional_event.__dict__ }}</p>
+<div class="form">
+    <h2 class="form-heading">Edit Class</h2>
+    <form action="/classes/{{ instructional_event.id }}" method="post">
+        <div class="form-attributes">
+            <div class="form-attribute">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value="{{ instructional_event.name }}">
+            </div>
+            <div class="form-attribute">
+                <label for="time">Time:</label>
+                <input type="datetime-local" name="time" id="time" value="{{ instructional_event.time.__format__('%Y-%m-%dT%H:%M') }}">
+            </div>
+            <div class="form-attribute">
+                <label for="duration">Duration (mins):</label>
+                <input type="number" name="duration" id="duration" value="{{ instructional_event.duration }}">
+            </div>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+</div>
 {% endblock %}

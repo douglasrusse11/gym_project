@@ -177,6 +177,10 @@ main {
     flex: 0 0 initial;
 }
 
+.form-button > input {
+    width: 150px;
+}
+
 footer {
     background-color: #000000;
     flex: 0 0 50px;
