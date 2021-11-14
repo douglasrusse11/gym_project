@@ -64,13 +64,9 @@ main {
     color: #ffffff;
     background-color: #000000;
     border-radius: 10px;
-    width: 20%;
+    width: 265px;
     padding: 10px;
     margin: 10px;
-}
-
-.members > .individual-container {
-    width: 25%;
 }
 
 .members > .individual-container > .individual-container-details {
@@ -149,7 +145,7 @@ main {
     padding: 10px;
 }
 
-.add-class-button, .add-member-button > input {
+.add-class-button > input, .add-member-button > input {
     color: #ffffff;
     background-color: #000000;
     border-radius: 10px;
