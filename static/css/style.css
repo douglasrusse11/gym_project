@@ -121,6 +121,20 @@ main {
     color: #8a8989;
 }
 
+.add-class-button {
+    display: flex;
+    justify-content: end;
+    padding: 10px;
+}
+
+.add-class-button > input {
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 5px;
+    width: 150px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
