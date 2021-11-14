@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 members_blueprint = Blueprint('members', __name__)
 
@@ -8,4 +8,4 @@ def show_all():
 
 @members_blueprint.route('/members/new')
 def add_member():
-    return "Add member here"
+    return render_template("members/new.html")
