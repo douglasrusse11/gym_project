@@ -57,5 +57,8 @@ def book_class(id):
 
 @classes_blueprint.route('/classes/<id>/book', methods=["POST"])
 def add_member_to_class(id):
-    print(id, request.form)
-    return "Member added to class"
+    instructional_event = instructional_event_repository.select(id)
+    member = member_repository.select(request.form["member_id"])
+    instructional_event.members.append(member)
+    instructional_event_repository.update(instructional_event)
+    return redirect(f"/classes/{instructional_event.id}")
