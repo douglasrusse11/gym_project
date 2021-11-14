@@ -7,7 +7,8 @@ members_blueprint = Blueprint('members', __name__)
 
 @members_blueprint.route('/members')
 def show_all():
-    return "Members go here"
+    members = member_repository.select_all()
+    return f"{[member.__dict__ for member in members]}"
 
 @members_blueprint.route('/members', methods=["POST"])
 def save_member():
