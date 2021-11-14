@@ -1,0 +1,8 @@
+{% extends "single-container.html" %}
+
+{% block single_container %}
+<p>{{ instructional_event.__dict__ }}</p>
+{% for member in members %}
+<p>{{ member.__dict__ }}</p>
+{% endfor %}
+{% endblock %}
