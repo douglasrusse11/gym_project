@@ -23,8 +23,15 @@
 <hr class="class-separator">
 <div class="booking-form form">
     <h2 class="form-heading">Book Class</h2>
-    <form action="/classes/{{ instructional_event.id }}/book" method="post">
+    <form {% if members == [] %}
+            action="/classes/{{ instructional_event.id }}" method="get"
+          {% else %}
+            action="/classes/{{ instructional_event.id }}/book" method="post"
+          {% endif %}>
         <div class="form-attributes">
+            {% if members == [] %}
+            <p class="error-message">No eligible members</p>
+            {% else %}
             <div class="form-attribute">
                 <label for="member">Name:</label>
                 <select name="member_id" id="member_id">
@@ -33,10 +40,12 @@
                     {% endfor %}
                 </select>
             </div>
+            {% endif %}
         </div>
         <div class="form-button">
-            <input type="submit" value="Book">
+            <input type="submit" value="{% if members == [] %} Back {% else %} Book {% endif %}">
         </div>
+
     </form>
 </div>
 {% endblock %}
