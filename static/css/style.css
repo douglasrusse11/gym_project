@@ -106,6 +106,10 @@ main {
     font-size: 48px;
 }
 
+.class-name > h3 {
+    margin-left: 20px;
+}
+
 .class-members {
     display: flex;
     flex-wrap: wrap;
