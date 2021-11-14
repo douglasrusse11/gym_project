@@ -1,0 +1,9 @@
+{% extends "multi-container.html" %}
+
+{% block multi_container %}
+{% for member in members %}
+    <div class="individual-container">
+        <p>{{ member.__dict__ }}</p>
+    </div>
+{% endfor %}
+{% endblock %}
