@@ -15,7 +15,7 @@
             </div>
             <div class="form-attribute">
                 <label for="dob">Date of Birth:</label>
-                <input type="date" name="dob" id="dob" value="{{ member.dob.__format__('%Y-%m-%d') }}">
+                <input type="date" name="dob" id="dob" max="{{ max_dob }}" value="{{ member.dob.__format__('%Y-%m-%d') }}">
             </div>
             <div class="form-attribute">
                 <label for="email">Email:</label>
