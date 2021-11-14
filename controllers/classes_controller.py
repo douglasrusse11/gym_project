@@ -30,3 +30,8 @@ def show(id):
 @classes_blueprint.route('/classes/new')
 def add_class():
     return render_template("/classes/new.html")
+
+@classes_blueprint.route('/classes/<id>/edit')
+def edit_class(id):
+    instructional_event = instructional_event_repository.select(id)
+    return f"Edit class: {instructional_event.__dict__}"
