@@ -52,4 +52,5 @@ def edit_class(id):
 def book_class(id):
     instructional_event = instructional_event_repository.select(id)
     members = member_repository.select_all()
-    return f"{instructional_event.__dict__} {[member.__dict__ for member in members]}"
+    eligible_members = [member for member in members if member not in instructional_event.members]
+    return f"{instructional_event.__dict__} {[member.__dict__ for member in eligible_members]}"
