@@ -29,3 +29,8 @@ def update_member(id):
 def edit_member(id):
     member = member_repository.select(id)
     return render_template("members_area/edit.html", member=member)
+
+@members_area_blueprint.route('/members_area/<id>/classes')
+def show_eligible_classes(id):
+    member = member_repository.select(id)
+    return f"Member {member.full_name()}'s eligible classes go here"
