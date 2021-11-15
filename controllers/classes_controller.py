@@ -51,8 +51,11 @@ def edit_class(id):
 @classes_blueprint.route('/classes/<id>/book')
 def book_class(id):
     instructional_event = instructional_event_repository.select(id)
-    members = member_repository.select_all()
-    eligible_members = [member for member in members if member not in instructional_event.members]
+    if instructional_event.has_capacity():
+        members = member_repository.select_all()
+        eligible_members = [member for member in members if member not in instructional_event.members]
+    else:
+        eligible_members = []
     return render_template("classes/book.html", instructional_event=instructional_event, members=eligible_members)
 
 @classes_blueprint.route('/classes/<id>/book', methods=["POST"])
