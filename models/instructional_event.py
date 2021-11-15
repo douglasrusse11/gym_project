@@ -11,3 +11,8 @@ class InstructionalEvent:
 
     def end_time(self):
         return self.time + timedelta(minutes=self.duration)
+
+    def has_capacity(self):
+        if self.capacity is not None:
+            return len(self.members) < self.capacity
+        return True

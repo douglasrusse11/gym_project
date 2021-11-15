@@ -44,11 +44,9 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_instructional_event1_has_capacity(self):
         self.assertTrue(self.instructional_event1.has_capacity())
     
-    @unittest.skip('')
     def test_instructional_event2_has_capacity(self):
         self.assertTrue(self.instructional_event2.has_capacity())
-    
-    @unittest.skip('')
+        
     def test_instructional_event3_has_capacity(self):
-        self.assertFlase(self.instructional_event3.has_capacity())
+        self.assertFalse(self.instructional_event3.has_capacity())
     
