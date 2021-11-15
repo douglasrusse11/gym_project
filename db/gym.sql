@@ -15,7 +15,8 @@ CREATE TABLE instructional_events (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     time TIMESTAMP NOT NULL,
-    duration INT NOT NULL
+    duration INT NOT NULL,
+    capacity INT
 );
 
 CREATE TABLE gym (

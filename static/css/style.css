@@ -96,7 +96,7 @@ main {
     display: flex;
 }
 
-.individual-container-details {
+.class-time {
     display: flex;
     justify-content: space-between;
 }
