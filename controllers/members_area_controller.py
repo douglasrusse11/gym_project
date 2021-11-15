@@ -11,3 +11,8 @@ def index():
 def show(id):
     member = member_repository.select(id)
     return render_template("members_area/show.html", member=member)
+
+@members_area_blueprint.route('/members_area/<id>/edit')
+def edit_member(id):
+    member = member_repository.select(id)
+    return render_template("members_area/edit.html", member=member)
