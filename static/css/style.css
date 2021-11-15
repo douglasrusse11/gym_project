@@ -106,23 +106,23 @@ main {
     justify-content: space-between;
 }
 
-.class-heading {
+.class-heading, .member-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 60%;
 }
 
-.class-name {
+.class-name, .member-name {
     display: flex;
     align-items: center;
 }
 
-.class-name > .material-icons {
+.class-name > .material-icons, .member-name > .material-icons {
     font-size: 48px;
 }
 
-.class-name > h3 {
+.class-name > h3, .member-name > h3 {
     margin-left: 20px;
 }
 

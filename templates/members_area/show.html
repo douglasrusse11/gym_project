@@ -2,6 +2,17 @@
 
 {% block content %}
 <div class="single-container">
-    <p>{{ member.__dict__ }}</p>
+    <div class="member-heading">
+        <div class="member-name">
+            <span class="material-icons">persons</span>
+            <h2>{{ member.full_name()}}</h2>
+            <h3><a href="/members_area/{{ member.id }}/edit"><span class="material-icons">edit</span></a></h3>
+        </div>
+        <div class="member-details">
+            <p>{{ member.dob }}</p>
+            <p>{{ member.email}}</p>
+            <p>{{ member.gender}}</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
