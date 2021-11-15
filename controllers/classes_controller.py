@@ -43,6 +43,7 @@ def update_class(id):
     instructional_event.duration = request.form["duration"]
     instructional_event.capacity = int(request.form["capacity"])
     instructional_event.min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
+    instructional_event.gender = None if request.form["gender"] == '' else request.form["gender"]
     instructional_event_repository.update(instructional_event)
     return redirect(f'/classes/{id}')
 
