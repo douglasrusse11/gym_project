@@ -25,7 +25,8 @@ def save_class():
 @classes_blueprint.route('/classes/<id>')
 def show(id):
     instructional_event = instructional_event_repository.select(id)
-    return render_template("classes/show.html", instructional_event=instructional_event)
+    spaces_remaining = instructional_event.capacity - len(instructional_event.members)
+    return render_template("classes/show.html", instructional_event=instructional_event, spaces_remaining=spaces_remaining)
 
 @classes_blueprint.route('/classes/<id>', methods=["POST"])
 def update_class(id):
