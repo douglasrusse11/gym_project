@@ -21,7 +21,8 @@ def save_class():
     duration = request.form["duration"]
     capacity = int(request.form["capacity"])
     min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
-    instructional_event = InstructionalEvent(name, time, duration, capacity=capacity, min_age=min_age)
+    gender = None if request.form["gender"] == '' else request.form["gender"]
+    instructional_event = InstructionalEvent(name, time, duration, capacity=capacity, min_age=min_age, gender=gender)
     instructional_event_repository.save(instructional_event)
     return redirect('/classes')
 
