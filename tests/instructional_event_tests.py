@@ -8,6 +8,7 @@ class TestInstructionalEvent(unittest.TestCase):
         self.instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 12, 18), 90)
         self.member = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, [self.member], 5, 1)
+        self.instructional_event3 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, [self.member, self.member, self.member, self.member, self.member], 5, 2)
 
     def test_instructional_event1_has_name(self):
         self.assertEqual("Yoga", self.instructional_event1.name)
@@ -39,3 +40,15 @@ class TestInstructionalEvent(unittest.TestCase):
     def test_end_time(self):
         self.assertEqual(datetime(2021, 11, 12, 19, 30), self.instructional_event1.end_time())
         self.assertEqual(datetime(2021, 11, 12, 20), self.instructional_event2.end_time())
+
+    def test_instructional_event1_has_capacity(self):
+        self.assertTrue(self.instructional_event1.has_capacity())
+    
+    @unittest.skip('')
+    def test_instructional_event2_has_capacity(self):
+        self.assertTrue(self.instructional_event2.has_capacity())
+    
+    @unittest.skip('')
+    def test_instructional_event3_has_capacity(self):
+        self.assertFlase(self.instructional_event3.has_capacity())
+    
