@@ -40,6 +40,8 @@ def update_class(id):
     hour, minute = (int(element) for element in time.split(':'))
     instructional_event.time = datetime(year, month, day, hour, minute)
     instructional_event.duration = request.form["duration"]
+    instructional_event.capacity = int(request.form["capacity"])
+    instructional_event.min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
     instructional_event_repository.update(instructional_event)
     return redirect(f'/classes/{id}')
 
