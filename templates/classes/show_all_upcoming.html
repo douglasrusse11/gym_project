@@ -3,7 +3,7 @@
 {% block multi_container %}
 <section class="classes">
     {% for instructional_event in instructional_events %}
-        <div class="individual-container">
+        <div class="individual-container {% if not instructional_event.has_capacity() %} fully-booked {% endif %}">
             <div class="individual-container-heading">
                 <div class="individual-container-name">
                     <a href="/classes/{{ instructional_event.id }}">
