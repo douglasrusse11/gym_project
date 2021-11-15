@@ -17,7 +17,8 @@ CREATE TABLE instructional_events (
     time TIMESTAMP NOT NULL,
     duration INT NOT NULL,
     capacity INT,
-    min_age INT
+    min_age INT,
+    gender VARCHAR(255)
 );
 
 CREATE TABLE gym (

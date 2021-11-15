@@ -4,15 +4,16 @@ from repositories import member_repository
 from datetime import datetime
 
 def save(instructional_event):
-    sql = """INSERT INTO instructional_events (name, time, duration, capacity, min_age)
-             VALUES (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s) 
+    sql = """INSERT INTO instructional_events (name, time, duration, capacity, min_age, gender)
+             VALUES (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s, %(gender)s) 
              RETURNING *"""
     values = {
               'name': instructional_event.name,
               'time': instructional_event.time,
               'duration': instructional_event.duration,
               'capacity': instructional_event.capacity,
-              'min_age': instructional_event.min_age
+              'min_age': instructional_event.min_age,
+              'gender': instructional_event.gender
               }
     result = run_sql(sql, values)[0]
     instructional_event.id = result["id"]
@@ -51,7 +52,7 @@ def select_all_upcoming():
     results = run_sql(sql, values)
     if results is not None:
         for result in results:
-            instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result["min_age"], id=result["id"])
+            instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result["min_age"], gender=result["gender"], id=result["id"])
             instructional_event.members = members(instructional_event)
             instructional_events.append(instructional_event)
     instructional_events.sort(key=sort_by_time_key)
@@ -63,14 +64,15 @@ def remove_members(instructional_event):
     run_sql(sql, values)
 
 def update(instructional_event):
-    sql = """UPDATE instructional_events SET (name, time, duration, capacity, min_age)
-             = (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s) WHERE id = %(id)s"""
+    sql = """UPDATE instructional_events SET (name, time, duration, capacity, min_age, gender)
+             = (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s, %(gender)s) WHERE id = %(id)s"""
     values = {
               'name': instructional_event.name,
               'time': instructional_event.time,
               'duration': instructional_event.duration,
               'capacity': instructional_event.capacity,
               'min_age': instructional_event.min_age,
+              'gender': instructional_event.gender,
               'id': instructional_event.id
               }
     run_sql(sql, values)
@@ -87,6 +89,6 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result['min_age'], id=result["id"])
+        instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result['min_age'], gender=result["gender"], id=result["id"])
         instructional_event.members = members(instructional_event)
     return instructional_event

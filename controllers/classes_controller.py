@@ -21,7 +21,8 @@ def save_class():
     duration = request.form["duration"]
     capacity = int(request.form["capacity"])
     min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
-    instructional_event = InstructionalEvent(name, time, duration, capacity=capacity, min_age=min_age)
+    gender = None if request.form["gender"] == '' else request.form["gender"]
+    instructional_event = InstructionalEvent(name, time, duration, capacity=capacity, min_age=min_age, gender=gender)
     instructional_event_repository.save(instructional_event)
     return redirect('/classes')
 
@@ -42,6 +43,7 @@ def update_class(id):
     instructional_event.duration = request.form["duration"]
     instructional_event.capacity = int(request.form["capacity"])
     instructional_event.min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
+    instructional_event.gender = None if request.form["gender"] == '' else request.form["gender"]
     instructional_event_repository.update(instructional_event)
     return redirect(f'/classes/{id}')
 
@@ -64,6 +66,8 @@ def book_class(id):
         eligible_members = []
     if instructional_event.min_age:
         eligible_members = [member for member in eligible_members if member.age() >= instructional_event.min_age]
+    if instructional_event.gender:
+        eligible_members = [member for member in eligible_members if member.gender == instructional_event.gender]
     spaces_remaining = instructional_event.capacity - len(instructional_event.members)
     return render_template("classes/book.html", instructional_event=instructional_event, members=eligible_members, spaces_remaining=spaces_remaining)
 

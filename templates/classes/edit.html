@@ -30,6 +30,15 @@
                     value="{{ instructional_event.min_age }}"
                 {% endif %}>
             </div>
+            <div class="form-attribute">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" placeholder="">
+                    <option value="" {% if instructional_event.gender == None %} selected="selected" {% endif %}>All</option>
+                    <option value="Male" {% if instructional_event.gender == "Male" %} selected="selected" {% endif %}>Male</option>
+                    <option value="Female" {% if instructional_event.gender == "Female" %} selected="selected" {% endif %}>Female</option>
+                    <option value="Non-binary" {% if instructional_event.gender == "Non-binary" %} selected="selected" {% endif %}>Non-binary</option>
+                </select>
+            </div>
         </div>
         <div class="form-button">
             <input type="submit" value="Update">
