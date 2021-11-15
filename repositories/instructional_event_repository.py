@@ -63,13 +63,14 @@ def remove_members(instructional_event):
     run_sql(sql, values)
 
 def update(instructional_event):
-    sql = """UPDATE instructional_events SET (name, time, duration, capacity)
-             = (%(name)s, %(time)s, %(duration)s, %(capacity)s) WHERE id = %(id)s"""
+    sql = """UPDATE instructional_events SET (name, time, duration, capacity, min_age)
+             = (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s) WHERE id = %(id)s"""
     values = {
               'name': instructional_event.name,
               'time': instructional_event.time,
               'duration': instructional_event.duration,
               'capacity': instructional_event.capacity,
+              'min_age': instructional_event.min_age,
               'id': instructional_event.id
               }
     run_sql(sql, values)
