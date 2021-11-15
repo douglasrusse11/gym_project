@@ -17,6 +17,19 @@
                 <label for="duration">Duration (mins):</label>
                 <input type="number" name="duration" id="duration" value="{{ instructional_event.duration }}">
             </div>
+            <div class="form-attribute">
+                <label for="capacity">Capacity:</label>
+                <input type="capacity" name="capacity" id="capacity" value="{{ instructional_event.capacity }}" min="1">
+            </div>
+            <div class="form-attribute">
+                <label for="min_age">Min Age:</label>
+                <input type="number" name="min_age" id="min_age"
+                {% if instructional_event.min_age == None %}
+                    value="" placeholder="None"
+                {% else %}
+                    value="{{ instructional_event.min_age }}"
+                {% endif %}>
+            </div>
         </div>
         <div class="form-button">
             <input type="submit" value="Update">

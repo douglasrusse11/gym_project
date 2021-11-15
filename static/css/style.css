@@ -71,6 +71,11 @@ main {
     margin: 10px;
 }
 
+.fully-booked {
+    color: #c4c4c4;
+    background-color: #8a8a8a;
+}
+
 .members > .individual-container > .individual-container-details {
     display: flex;
     flex-direction: column;

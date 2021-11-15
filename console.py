@@ -13,9 +13,9 @@ member_repository.save(member2)
 
 instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 17, 18), 90)
 instructional_event_repository.save(instructional_event1)
-instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 20, 19), 60, [member1, member2], 5, 1)
+instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 20, 19), 60, [member1, member2], 5, 60)
 instructional_event_repository.save(instructional_event2)
-instructional_event3 = InstructionalEvent("Martial Arts", datetime(2021, 11, 18, 10), 60, [member1, member2], 2)
+instructional_event3 = InstructionalEvent("Martial Arts", datetime(2021, 11, 18, 10), 60, [member1, member2], 2, 40)
 instructional_event_repository.save(instructional_event3)
 
 instructional_event_repository.add_member(instructional_event1, member1)
