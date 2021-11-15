@@ -23,8 +23,11 @@
             </div>
             <hr>
             <div class="individual-container-details">
-                <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
-                <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+                <div class="class-time">
+                    <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+                    <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+                </div>
+                <p>Capacity: {{ instructional_event.capacity }}</p>
             </div>
         </div>
     {% endfor %}
