@@ -28,6 +28,9 @@
                     <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
                 </div>
                 <p>Capacity: {{ instructional_event.capacity }}</p>
+                {% if instructional_event.min_age %}
+                    <p>Over {{ instructional_event.min_age }}s</p>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
