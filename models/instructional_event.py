@@ -1,13 +1,14 @@
 from datetime import timedelta
 
 class InstructionalEvent:
-    def __init__(self, name, time, duration, members=[], capacity=None, min_age=None, id=None):
+    def __init__(self, name, time, duration, members=[], capacity=None, min_age=None, gender=None, id=None):
         self.name = name
         self.time = time
         self.duration = duration
         self.members = members
         self.capacity = capacity
         self.min_age = min_age
+        self.gender = gender
         self.id = id
 
     def end_time(self):
