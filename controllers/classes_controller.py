@@ -12,13 +12,16 @@ def show_all():
 
 @classes_blueprint.route('/classes', methods=["POST"])
 def save_class():
+    print(request.form)
     name = request.form["name"]
     date, time = request.form["time"].split('T')
     year, month, day = (int(element) for element in date.split('-'))
     hour, minute = (int(element) for element in time.split(':'))
     time = datetime(year, month, day, hour, minute)
     duration = request.form["duration"]
-    instructional_event = InstructionalEvent(name, time, duration)
+    capacity = int(request.form["capacity"])
+    min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
+    instructional_event = InstructionalEvent(name, time, duration, capacity=capacity, min_age=min_age)
     instructional_event_repository.save(instructional_event)
     return redirect('/classes')
 
