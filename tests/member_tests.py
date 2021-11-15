@@ -7,7 +7,9 @@ class TestMember(unittest.TestCase):
         self.member1 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.member2 = Member("Rashad", "Yewande", date(1972, 8, 4), "nogin@icloud.com", "Male", 1)
         self.member3 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
-
+        self.member4 = Member("Augusta", "Eldrick", date(1997, 11, 14), "crobles@yahoo.ca")
+        self.member5 = Member("Augusta", "Eldrick", date(1997, 11, 15), "crobles@yahoo.ca")
+        self.member6 = Member("Augusta", "Eldrick", date(1997, 11, 16), "crobles@yahoo.ca")
     def test_member1_has_first_name(self):
         self.assertEqual("Augusta", self.member1.first_name)
 
@@ -38,3 +40,18 @@ class TestMember(unittest.TestCase):
 
     def test_member_equality(self):
         self.assertEqual(self.member1, self.member3)
+
+    def test_member1_age(self):
+        self.assertEqual(24, self.member1.age())
+
+    def test_member2_age(self):
+        self.assertEqual(49, self.member2.age())
+
+    def test_member4_age(self):
+        self.assertEqual(24, self.member4.age())
+
+    def test_member5_age(self):
+        self.assertEqual(24, self.member5.age())
+
+    def test_member6_age(self):
+        self.assertEqual(23, self.member6.age())
