@@ -31,6 +31,9 @@
                 {% if instructional_event.min_age %}
                     <p>Over {{ instructional_event.min_age }}s</p>
                 {% endif %}
+                {% if instructional_event.gender %}
+                    <p>{{ instructional_event.gender }} only</p>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
