@@ -10,4 +10,4 @@ def index():
 @members_area_blueprint.route('/members_area/<id>')
 def show(id):
     member = member_repository.select(id)
-    return f"Member {member.full_name()}'s profile goes here"
+    return render_template("members_area/show.html", member=member)
