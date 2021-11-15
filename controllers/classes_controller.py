@@ -57,6 +57,8 @@ def book_class(id):
         eligible_members = [member for member in members if member not in instructional_event.members]
     else:
         eligible_members = []
+    if instructional_event.min_age:
+        eligible_members = [member for member in eligible_members if member.age() >= instructional_event.min_age]
     spaces_remaining = instructional_event.capacity - len(instructional_event.members)
     return render_template("classes/book.html", instructional_event=instructional_event, members=eligible_members, spaces_remaining=spaces_remaining)
 
