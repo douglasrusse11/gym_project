@@ -1,53 +1,54 @@
-{% extends "single-container.html" %}
+{% extends "classes/index.html" %}
 
-{% block single_container %}
-<div class="class-heading">
-    <div class="class-name">
-        <span class="material-icons">
-            {% if instructional_event.name == 'Yoga' %}
-                self_improvement
-            {% elif instructional_event.name == 'Martial Arts' %}
-                sports_martial_arts
-            {% else %} 
-                sports
-            {% endif %}
-        </span>
-        <h2>{{ instructional_event.name }}</h2>
-        <h3><a href="/classes/{{ instructional_event.id }}/edit"><span class="material-icons">edit</span></a></h3>
+{% block content %}
+<div class="single-container">
+    <div class="class-heading">
+        <div class="class-name">
+            <span class="material-icons">
+                {% if instructional_event.name == 'Yoga' %}
+                    self_improvement
+                {% elif instructional_event.name == 'Martial Arts' %}
+                    sports_martial_arts
+                {% else %} 
+                    sports
+                {% endif %}
+            </span>
+            <h2>{{ instructional_event.name }}</h2>
+            <h3><a href="/classes/{{ instructional_event.id }}/edit"><span class="material-icons">edit</span></a></h3>
+        </div>
+        <div class="class-details">
+            <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+            <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+            <p>{{ spaces_remaining }} spaces remaining</p>
+            <p>{{ instructional_event.gender }} only</p>
+        </div>
     </div>
-    <div class="class-details">
-        <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
-        <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
-        <p>{{ spaces_remaining }} spaces remaining</p>
-        <p>{{ instructional_event.gender }} only</p>
-    </div>
-</div>
-<hr class="class-separator">
-<div class="booking-form form">
-    <h2 class="form-heading">Book Class</h2>
-    <form {% if members == [] %}
-            action="/classes/{{ instructional_event.id }}" method="get"
-          {% else %}
-            action="/classes/{{ instructional_event.id }}/book" method="post"
-          {% endif %}>
-        <div class="form-attributes">
-            {% if members == [] %}
-            <p class="error-message">No eligible members</p>
-            {% else %}
-            <div class="form-attribute">
-                <label for="member">Name:</label>
-                <select name="member_id" id="member_id">
-                    {% for member in members %}
-                        <option value="{{ member.id }}">{{ member.full_name() }}</option>
-                    {% endfor %}
-                </select>
+    <hr class="class-separator">
+    <div class="booking-form form">
+        <h2 class="form-heading">Book Class</h2>
+        <form {% if members == [] %}
+                action="/classes/{{ instructional_event.id }}" method="get"
+              {% else %}
+                action="/classes/{{ instructional_event.id }}/book" method="post"
+              {% endif %}>
+            <div class="form-attributes">
+                {% if members == [] %}
+                    <p class="error-message">No eligible members</p>
+                {% else %}
+                    <div class="form-attribute">
+                        <label for="member">Name:</label>
+                        <select name="member_id" id="member_id">
+                            {% for member in members %}
+                                <option value="{{ member.id }}">{{ member.full_name() }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}
             </div>
-            {% endif %}
-        </div>
-        <div class="form-button">
-            <input type="submit" value="{% if members == [] %} Back {% else %} Book {% endif %}">
-        </div>
-
-    </form>
+            <div class="form-button">
+                <input type="submit" value="{% if members == [] %} Back {% else %} Book {% endif %}">
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

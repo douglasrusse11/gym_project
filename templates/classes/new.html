@@ -1,43 +1,45 @@
-{% extends "single-container.html" %}
+{% extends "classes/index.html" %}
 
-{% block single_container %}
-<div class="form">
-    <h2 class="form-heading">Add Class</h2>
-    <form action="/classes" method="post">
-        <div class="form-attributes">
-            <div class="form-attribute">
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" placeholder="Class Name">
+{% block content %}
+<div class="single-container">
+    <div class="form">
+        <h2 class="form-heading">Add Class</h2>
+        <form action="/classes" method="post">
+            <div class="form-attributes">
+                <div class="form-attribute">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Class Name">
+                </div>
+                <div class="form-attribute">
+                    <label for="time">Time:</label>
+                    <input type="datetime-local" name="time" id="time">
+                </div>
+                <div class="form-attribute">
+                    <label for="duration">Duration (mins):</label>
+                    <input type="number" name="duration" id="duration" placeholder="60">
+                </div>
+                <div class="form-attribute">
+                    <label for="capacity">Capacity:</label>
+                    <input type="capacity" name="capacity" id="capacity" placeholder="10" min="1">
+                </div>
+                <div class="form-attribute">
+                    <label for="min_age">Min Age:</label>
+                    <input type="number" name="min_age" id="min_age" placeholder="None">
+                </div>
+                <div class="form-attribute">
+                    <label for="gender">Gender:</label>
+                    <select name="gender" id="gender" placeholder="">
+                        <option value="">All</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Non-binary">Non-binary</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-attribute">
-                <label for="time">Time:</label>
-                <input type="datetime-local" name="time" id="time">
+            <div class="form-button">
+                <input type="submit" value="Add Class">
             </div>
-            <div class="form-attribute">
-                <label for="duration">Duration (mins):</label>
-                <input type="number" name="duration" id="duration" placeholder="60">
-            </div>
-            <div class="form-attribute">
-                <label for="capacity">Capacity:</label>
-                <input type="capacity" name="capacity" id="capacity" placeholder="10" min="1">
-            </div>
-            <div class="form-attribute">
-                <label for="min_age">Min Age:</label>
-                <input type="number" name="min_age" id="min_age" placeholder="None">
-            </div>
-            <div class="form-attribute">
-                <label for="gender">Gender:</label>
-                <select name="gender" id="gender" placeholder="">
-                    <option value="">All</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Non-binary">Non-binary</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-button">
-            <input type="submit" value="Add Class">
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -1,48 +1,50 @@
-{% extends "single-container.html" %}
+{% extends "classes/index.html" %}
 
-{% block single_container %}
-<div class="form">
-    <h2 class="form-heading">Edit Class</h2>
-    <form action="/classes/{{ instructional_event.id }}" method="post">
-        <div class="form-attributes">
-            <div class="form-attribute">
-                <label for="name">Name:</label>
-                <input type="text" name="name" id="name" value="{{ instructional_event.name }}">
+{% block content %}
+<div class="single-container">
+    <div class="form">
+        <h2 class="form-heading">Edit Class</h2>
+        <form action="/classes/{{ instructional_event.id }}" method="post">
+            <div class="form-attributes">
+                <div class="form-attribute">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" value="{{ instructional_event.name }}">
+                </div>
+                <div class="form-attribute">
+                    <label for="time">Time:</label>
+                    <input type="datetime-local" name="time" id="time" value="{{ instructional_event.time.__format__('%Y-%m-%dT%H:%M') }}">
+                </div>
+                <div class="form-attribute">
+                    <label for="duration">Duration (mins):</label>
+                    <input type="number" name="duration" id="duration" value="{{ instructional_event.duration }}">
+                </div>
+                <div class="form-attribute">
+                    <label for="capacity">Capacity:</label>
+                    <input type="capacity" name="capacity" id="capacity" value="{{ instructional_event.capacity }}" min="1">
+                </div>
+                <div class="form-attribute">
+                    <label for="min_age">Min Age:</label>
+                    <input type="number" name="min_age" id="min_age"
+                    {% if instructional_event.min_age == None %}
+                        value="" placeholder="None"
+                    {% else %}
+                        value="{{ instructional_event.min_age }}"
+                    {% endif %}>
+                </div>
+                <div class="form-attribute">
+                    <label for="gender">Gender:</label>
+                    <select name="gender" id="gender" placeholder="">
+                        <option value="" {% if instructional_event.gender == None %} selected="selected" {% endif %}>All</option>
+                        <option value="Male" {% if instructional_event.gender == "Male" %} selected="selected" {% endif %}>Male</option>
+                        <option value="Female" {% if instructional_event.gender == "Female" %} selected="selected" {% endif %}>Female</option>
+                        <option value="Non-binary" {% if instructional_event.gender == "Non-binary" %} selected="selected" {% endif %}>Non-binary</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-attribute">
-                <label for="time">Time:</label>
-                <input type="datetime-local" name="time" id="time" value="{{ instructional_event.time.__format__('%Y-%m-%dT%H:%M') }}">
+            <div class="form-button">
+                <input type="submit" value="Update">
             </div>
-            <div class="form-attribute">
-                <label for="duration">Duration (mins):</label>
-                <input type="number" name="duration" id="duration" value="{{ instructional_event.duration }}">
-            </div>
-            <div class="form-attribute">
-                <label for="capacity">Capacity:</label>
-                <input type="capacity" name="capacity" id="capacity" value="{{ instructional_event.capacity }}" min="1">
-            </div>
-            <div class="form-attribute">
-                <label for="min_age">Min Age:</label>
-                <input type="number" name="min_age" id="min_age"
-                {% if instructional_event.min_age == None %}
-                    value="" placeholder="None"
-                {% else %}
-                    value="{{ instructional_event.min_age }}"
-                {% endif %}>
-            </div>
-            <div class="form-attribute">
-                <label for="gender">Gender:</label>
-                <select name="gender" id="gender" placeholder="">
-                    <option value="" {% if instructional_event.gender == None %} selected="selected" {% endif %}>All</option>
-                    <option value="Male" {% if instructional_event.gender == "Male" %} selected="selected" {% endif %}>Male</option>
-                    <option value="Female" {% if instructional_event.gender == "Female" %} selected="selected" {% endif %}>Female</option>
-                    <option value="Non-binary" {% if instructional_event.gender == "Non-binary" %} selected="selected" {% endif %}>Non-binary</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-button">
-            <input type="submit" value="Update">
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}
