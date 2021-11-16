@@ -2,34 +2,44 @@ from models.instructional_event import InstructionalEvent
 from models.member import Member
 from repositories import instructional_event_repository, member_repository
 from datetime import datetime, date
+from random import randint, choice
 import os
 
 os.system('psql -d gym -f db/gym.sql')
 
-member1 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
+member1 = Member("Aga", "Koltun", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "aga@gym.com", choice(["Male", "Female", "Non-binary", None]))
 member_repository.save(member1)
-member2 = Member("Rashad", "Yewande", date(1972, 8, 4), "nogin@icloud.com", "Male")
+member2 = Member("Almas", "Butt", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "almas@gym.com", choice(["Male", "Female", "Non-binary", None]))
 member_repository.save(member2)
+member3 = Member("Andrew", "Calder", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "andrew@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member3)
+member4 = Member("David", "McIntyre", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "david@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member4)
+member5 = Member("Douglas", "Russell", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "douglas@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member5)
+member6 = Member("Gavin", "Hargin", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "gavin@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member6)
+member7 = Member("Graeme", "Brown", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "graeme@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member7)
+member8 = Member("Louis", "Fletcher", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "louis@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member8)
+member9 = Member("Martin", "Quinn", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "martin@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member9)
+member10 = Member("Michael", "Plata", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "michael@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member10)
+member11 = Member("Nicole", "Sneddon", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "nicole@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member11)
+member12 = Member("Roger", "Malgueira", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "roger@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member12)
+member13 = Member("Stefano", "Binando", date(randint(1940, 2000), randint(1, 12), randint(1,28)), "stefano@gym.com", choice(["Male", "Female", "Non-binary", None]))
+member_repository.save(member13)
 
-instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 17, 18), 90, gender="Female")
+
+instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 17, 18), 90, 1)
 instructional_event_repository.save(instructional_event1)
-instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 20, 19), 60, [member1, member2], 5, 60)
+instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 20, 19), 120, 10)
 instructional_event_repository.save(instructional_event2)
-instructional_event3 = InstructionalEvent("Martial Arts", datetime(2021, 11, 18, 10), 60, [member1, member2], 2, 40)
+instructional_event3 = InstructionalEvent("Swimming", datetime(2021, 11, 18, 10), 60, 20, gender="Female")
 instructional_event_repository.save(instructional_event3)
-
-instructional_event_repository.add_member(instructional_event1, member1)
-
-instructional_event1.capacity = 10
-instructional_event1.duration = 45
-instructional_event_repository.update(instructional_event1)
-
-instructional_events = instructional_event_repository.select_all_upcoming()
-for instructional_event in instructional_events:
-    print(instructional_event.__dict__)
-
-instructional_event3.gender = "Non-binary"
-instructional_event_repository.update(instructional_event3)
-
-instructional_event = instructional_event_repository.select(3)
-print('\n', instructional_event.__dict__)
+instructional_event4 = InstructionalEvent("Aquarobics", datetime(2021, 11, 18, 10), 60, 15, min_age=60)
+instructional_event_repository.save(instructional_event4)
