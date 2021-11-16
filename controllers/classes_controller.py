@@ -75,6 +75,5 @@ def book_class(id):
 def add_member_to_class(id):
     instructional_event = instructional_event_repository.select(id)
     member = member_repository.select(request.form["member_id"])
-    instructional_event.members.append(member)
-    instructional_event_repository.update(instructional_event)
+    instructional_event_repository.add_member(instructional_event, member)
     return redirect(f"/classes/{instructional_event.id}")
