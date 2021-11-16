@@ -28,5 +28,9 @@ def handle_login_request():
     else:
         return redirect("/login")
 
+@app.route('/attribution')
+def attribution():
+    return render_template("attribution.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
