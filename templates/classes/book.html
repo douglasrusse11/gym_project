@@ -20,7 +20,12 @@
             <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
             <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
             <p>{{ spaces_remaining }} spaces remaining</p>
-            <p>{{ instructional_event.gender }} only</p>
+            {% if instructional_event.min_age %}
+                <p>Over {{ instructional_event.min_age }}s</p>
+            {% endif %}
+            {% if instructional_event.gender %}
+                <p>{{ instructional_event.gender }} only</p>
+            {% endif %}
         </div>
     </div>
     <hr class="class-separator">
