@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS gym;
+DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS instructional_events;
 DROP TABLE IF EXISTS members;
 
@@ -21,7 +21,7 @@ CREATE TABLE instructional_events (
     gender VARCHAR(255)
 );
 
-CREATE TABLE gym (
+CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
     member_id INT REFERENCES members(id),
     instructional_event_id INT REFERENCES instructional_events(id)

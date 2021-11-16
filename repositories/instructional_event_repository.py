@@ -22,7 +22,7 @@ def save(instructional_event):
             add_member(instructional_event, member)
 
 def add_member(instructional_event, member):
-    sql = """INSERT INTO gym (member_id, instructional_event_id)
+    sql = """INSERT INTO bookings (member_id, instructional_event_id)
              VALUES (%(member_id)s, %(instructional_event_id)s)"""
     values = {
               'member_id': member.id,
@@ -33,9 +33,9 @@ def add_member(instructional_event, member):
 def members(instructional_event):
     members = []
     sql = """SELECT members.id FROM members
-             INNER JOIN gym ON members.id = gym.member_id
+             INNER JOIN bookings ON members.id = bookings.member_id
              INNER JOIN instructional_events
-             ON gym.instructional_event_id = instructional_events.id
+             ON bookings.instructional_event_id = instructional_events.id
              WHERE instructional_events.id = %s"""
     values = [instructional_event.id]
     results = run_sql(sql, values)
@@ -59,7 +59,7 @@ def select_all_upcoming():
     return instructional_events
 
 def remove_members(instructional_event):
-    sql = "DELETE FROM gym WHERE instructional_event_id = %s"
+    sql = "DELETE FROM bookings WHERE instructional_event_id = %s"
     values = [instructional_event.id]
     run_sql(sql, values)
 
