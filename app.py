@@ -12,5 +12,9 @@ app.register_blueprint(members_area_blueprint)
 def index():
     return render_template("index.html")
 
+@app.route('/login')
+def login():
+    return "Log in form goes here"
+
 if __name__ == '__main__':
     app.run(debug=True)
