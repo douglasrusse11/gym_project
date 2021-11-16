@@ -1,0 +1,40 @@
+{% extends "multi-container.html" %}
+
+{% block multi_container %}
+<section class="classes">
+    {% for instructional_event in instructional_events %}
+        <div class="individual-container {% if not instructional_event.has_capacity() %} fully-booked {% endif %}">
+            <div class="individual-container-heading">
+                <div class="individual-container-name">
+                    <a href="/members_area/{{ member.id }}/classes/{{ instructional_event.id }}">
+                    <span class="material-icons">
+                        {% if instructional_event.name == 'Yoga' %}
+                            self_improvement
+                        {% elif instructional_event.name == 'Martial Arts' %}
+                            sports_martial_arts
+                        {% else %} 
+                            sports
+                        {% endif %}
+                    </span>
+                    <h2>{{ instructional_event.name }}</h2>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="individual-container-details">
+                <div class="class-time">
+                    <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+                    <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+                </div>
+                <p>Capacity: {{ instructional_event.capacity }}</p>
+                {% if instructional_event.min_age %}
+                    <p>Over {{ instructional_event.min_age }}s</p>
+                {% endif %}
+                {% if instructional_event.gender %}
+                    <p>{{ instructional_event.gender }} only</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-from repositories import member_repository
+from repositories import member_repository, instructional_event_repository
 from datetime import date
 
 members_area_blueprint = Blueprint('members_area', __name__)
@@ -33,4 +33,5 @@ def edit_member(id):
 @members_area_blueprint.route('/members_area/<id>/classes')
 def show_eligible_classes(id):
     member = member_repository.select(id)
-    return f"Member {member.full_name()}'s eligible classes go here"
+    instructional_events = instructional_event_repository.select_all_upcoming()
+    return render_template("members_area/show_all_classes.html", member=member, instructional_events=instructional_events)
