@@ -21,7 +21,7 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], id)
+        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], int(id))
     return member
 
 def update(member):
