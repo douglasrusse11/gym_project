@@ -75,7 +75,7 @@ def eligible_classes(member):
     conditional = False
     sql = """SELECT * FROM instructional_events
              WHERE (gender = %(gender)s OR gender IS NULL)
-             (AND min_age < %(age)s OR min_age IS NULL)"""
+             AND (min_age < %(age)s OR min_age IS NULL)"""
     values = {
               'gender': member.gender,
               'age': member.age()
