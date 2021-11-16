@@ -14,7 +14,7 @@ def index():
 
 @app.route('/login')
 def login():
-    return "Log in form goes here"
+    return render_template("login.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
