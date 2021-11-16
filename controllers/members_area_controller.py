@@ -40,4 +40,5 @@ def show_eligible_classes(id):
 def show_class(member_id, instructional_event_id):
     member = member_repository.select(member_id)
     instructional_event = instructional_event_repository.select(instructional_event_id)
-    return f"Member: {member.full_name()}, Class: {instructional_event.__dict__}"
+    spaces_remaining = instructional_event.capacity - len(instructional_event.members)
+    return render_template("members_area/show_class.html", member=member, instructional_event=instructional_event, spaces_remaining=spaces_remaining)
