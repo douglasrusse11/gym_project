@@ -14,10 +14,7 @@ def show_all():
 def save_class():
     print(request.form)
     name = request.form["name"]
-    date, time = request.form["time"].split('T')
-    year, month, day = (int(element) for element in date.split('-'))
-    hour, minute = (int(element) for element in time.split(':'))
-    time = datetime(year, month, day, hour, minute)
+    time = datetime.strptime(request.form["time"], '%Y-%m-%dT%H:%M')
     duration = request.form["duration"]
     capacity = int(request.form["capacity"])
     min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
@@ -36,10 +33,7 @@ def show(id):
 def update_class(id):
     instructional_event = instructional_event_repository.select(id)
     instructional_event.name = request.form["name"]
-    date, time = request.form["time"].split('T')
-    year, month, day = (int(element) for element in date.split('-'))
-    hour, minute = (int(element) for element in time.split(':'))
-    instructional_event.time = datetime(year, month, day, hour, minute)
+    instructional_event.time = datetime.strptime(request.form["time"], '%Y-%m-%dT%H:%M')
     instructional_event.duration = request.form["duration"]
     instructional_event.capacity = int(request.form["capacity"])
     instructional_event.min_age = None if request.form["min_age"] == '' else int(request.form["min_age"])
