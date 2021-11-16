@@ -42,3 +42,10 @@ def show_class(member_id, instructional_event_id):
     instructional_event = instructional_event_repository.select(instructional_event_id)
     spaces_remaining = instructional_event.capacity - len(instructional_event.members)
     return render_template("members_area/show_class.html", member=member, instructional_event=instructional_event, spaces_remaining=spaces_remaining)
+
+@members_area_blueprint.route('/members_area/<member_id>/classes/<instructional_event_id>', methods=["POST"])
+def book_class(member_id, instructional_event_id):
+    member = member_repository.select(member_id)
+    instructional_event = instructional_event_repository.select(instructional_event_id)
+    instructional_event_repository.add_member(instructional_event, member)
+    return redirect(f"/members_area/{member.id}/classes")
