@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from controllers.classes_controller import classes_blueprint
 from controllers.members_controller import members_blueprint
 from controllers.members_area_controller import members_area_blueprint
@@ -15,6 +15,11 @@ def index():
 @app.route('/login')
 def login():
     return render_template("login.html")
+
+@app.route('/login', methods=["POST"])
+def handle_login_request():
+    print(request.form)
+    return "Log in successful"
 
 if __name__ == '__main__':
     app.run(debug=True)
