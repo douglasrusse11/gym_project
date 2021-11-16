@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 from models.instructional_event import InstructionalEvent
 from repositories import member_repository
-from datetime import datetime
+from datetime import datetime, date
 
 def save(instructional_event):
     sql = """INSERT INTO instructional_events (name, time, duration, capacity, min_age, gender)
@@ -84,3 +84,38 @@ def select(id):
         instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result['min_age'], gender=result["gender"], id=result["id"])
         instructional_event.members = members(instructional_event)
     return instructional_event
+
+def eligible_members(instructional_event):
+    members = []
+    conditional = False
+    if instructional_event.has_capacity():
+        sql = "SELECT * FROM members"
+        values = {}
+        if instructional_event.members != []:
+            conditional = True
+            sql += " WHERE id NOT IN %(members_id_list)s"
+            values['members_id_list'] = tuple([member.id for member in instructional_event.members])
+        if instructional_event.min_age:
+            if conditional:
+                sql += " AND"
+            else: 
+                sql += " WHERE"
+                conditional = True
+            today = date.today()
+            max_dob = today.replace(year=today.year-instructional_event.min_age)
+            sql += " members.dob < %(max_dob)s"
+            values["max_dob"] = max_dob
+        if instructional_event.gender:
+            if conditional:
+                sql += " AND"
+            else: 
+                sql += " WHERE"
+                conditional = True
+            sql += " gender = %(instructional_event_gender)s"
+            values["instructional_event_gender"] = instructional_event.gender
+        results = run_sql(sql, values)
+        if results is not None:
+            for result in results:
+                member = member_repository.select(result["id"])
+                members.append(member)
+    return members
