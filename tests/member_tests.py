@@ -7,9 +7,9 @@ class TestMember(unittest.TestCase):
         self.member1 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.member2 = Member("Rashad", "Yewande", date(1972, 8, 4), "nogin@icloud.com", "Male", 1)
         self.member3 = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
-        self.member4 = Member("Augusta", "Eldrick", date(1997, 11, 14), "crobles@yahoo.ca")
-        self.member5 = Member("Augusta", "Eldrick", date(1997, 11, 15), "crobles@yahoo.ca")
-        self.member6 = Member("Augusta", "Eldrick", date(1997, 11, 16), "crobles@yahoo.ca")
+        self.member4 = Member("Augusta", "Eldrick", date(1997, 11, 15), "crobles@yahoo.ca")
+        self.member5 = Member("Augusta", "Eldrick", date(1997, 11, 16), "crobles@yahoo.ca")
+        self.member6 = Member("Augusta", "Eldrick", date(1997, 11, 17), "crobles@yahoo.ca")
     def test_member1_has_first_name(self):
         self.assertEqual("Augusta", self.member1.first_name)
 

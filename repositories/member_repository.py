@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.member import Member
+from repositories import instructional_event_repository
 
 def save(member):
     sql = """INSERT INTO members (first_name, last_name, dob, email, gender)
@@ -21,7 +22,7 @@ def select(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result is not None:
-        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], int(id))
+        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], result['id'])
     return member
 
 def update(member):
@@ -56,7 +57,7 @@ def select_all():
 def select_by_name(full_name):
     member = None
     names = full_name.split()
-    if len(names) is not 2:
+    if len(names) != 2:
         return member
     sql = """SELECT * FROM members WHERE first_name = %(first_name)s
            AND last_name = %(last_name)s"""
@@ -69,3 +70,19 @@ def select_by_name(full_name):
         member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], result['id'])
     return member
 
+def eligible_classes(member):
+    instructional_events = []
+    conditional = False
+    sql = """SELECT * FROM instructional_events
+             WHERE (gender = %(gender)s OR gender IS NULL)
+             AND (min_age < %(age)s OR min_age IS NULL)"""
+    values = {
+              'gender': member.gender,
+              'age': member.age()
+              }
+    results = run_sql(sql, values)
+    for result in results:
+        instructional_event = instructional_event_repository.select(result["id"])
+        instructional_events.append(instructional_event)
+    return instructional_events
+    

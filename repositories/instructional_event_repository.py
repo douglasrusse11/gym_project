@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 from models.instructional_event import InstructionalEvent
 from repositories import member_repository
-from datetime import datetime
+from datetime import datetime, date
 
 def save(instructional_event):
     sql = """INSERT INTO instructional_events (name, time, duration, capacity, min_age, gender)
@@ -22,7 +22,7 @@ def save(instructional_event):
             add_member(instructional_event, member)
 
 def add_member(instructional_event, member):
-    sql = """INSERT INTO gym (member_id, instructional_event_id)
+    sql = """INSERT INTO bookings (member_id, instructional_event_id)
              VALUES (%(member_id)s, %(instructional_event_id)s)"""
     values = {
               'member_id': member.id,
@@ -33,9 +33,9 @@ def add_member(instructional_event, member):
 def members(instructional_event):
     members = []
     sql = """SELECT members.id FROM members
-             INNER JOIN gym ON members.id = gym.member_id
+             INNER JOIN bookings ON members.id = bookings.member_id
              INNER JOIN instructional_events
-             ON gym.instructional_event_id = instructional_events.id
+             ON bookings.instructional_event_id = instructional_events.id
              WHERE instructional_events.id = %s"""
     values = [instructional_event.id]
     results = run_sql(sql, values)
@@ -58,11 +58,6 @@ def select_all_upcoming():
     instructional_events.sort(key=sort_by_time_key)
     return instructional_events
 
-def remove_members(instructional_event):
-    sql = "DELETE FROM gym WHERE instructional_event_id = %s"
-    values = [instructional_event.id]
-    run_sql(sql, values)
-
 def update(instructional_event):
     sql = """UPDATE instructional_events SET (name, time, duration, capacity, min_age, gender)
              = (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s, %(gender)s) WHERE id = %(id)s"""
@@ -76,9 +71,6 @@ def update(instructional_event):
               'id': instructional_event.id
               }
     run_sql(sql, values)
-    remove_members(instructional_event)
-    for member in instructional_event.members:
-        add_member(instructional_event, member)
 
 def sort_by_time_key(instructional_event):
     return instructional_event.time
@@ -92,3 +84,38 @@ def select(id):
         instructional_event = InstructionalEvent(result["name"], result["time"], result["duration"], capacity=result["capacity"], min_age=result['min_age'], gender=result["gender"], id=result["id"])
         instructional_event.members = members(instructional_event)
     return instructional_event
+
+def eligible_members(instructional_event):
+    members = []
+    conditional = False
+    if instructional_event.has_capacity():
+        sql = "SELECT * FROM members"
+        values = {}
+        if instructional_event.members != []:
+            conditional = True
+            sql += " WHERE id NOT IN %(members_id_list)s"
+            values['members_id_list'] = tuple([member.id for member in instructional_event.members])
+        if instructional_event.min_age:
+            if conditional:
+                sql += " AND"
+            else: 
+                sql += " WHERE"
+                conditional = True
+            today = date.today()
+            max_dob = today.replace(year=today.year-instructional_event.min_age)
+            sql += " members.dob < %(max_dob)s"
+            values["max_dob"] = max_dob
+        if instructional_event.gender:
+            if conditional:
+                sql += " AND"
+            else: 
+                sql += " WHERE"
+                conditional = True
+            sql += " gender = %(instructional_event_gender)s"
+            values["instructional_event_gender"] = instructional_event.gender
+        results = run_sql(sql, values)
+        if results is not None:
+            for result in results:
+                member = member_repository.select(result["id"])
+                members.append(member)
+    return members
