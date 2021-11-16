@@ -35,3 +35,9 @@ def show_eligible_classes(id):
     member = member_repository.select(id)
     instructional_events = instructional_event_repository.select_all_upcoming()
     return render_template("members_area/show_all_classes.html", member=member, instructional_events=instructional_events)
+
+@members_area_blueprint.route('/members_area/<member_id>/classes/<instructional_event_id>')
+def show_class(member_id, instructional_event_id):
+    member = member_repository.select(member_id)
+    instructional_event = instructional_event_repository.select(instructional_event_id)
+    return f"Member: {member.full_name()}, Class: {instructional_event.__dict__}"
