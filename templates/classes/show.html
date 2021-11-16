@@ -1,42 +1,44 @@
-{% extends "single-container.html" %}
+{% extends "classes/index.html" %}
 
-{% block single_container %}
-<div class="class-heading">
-    <div class="class-name">
-        <span class="material-icons">
-            {% if instructional_event.name == 'Yoga' %}
-                self_improvement
-            {% elif instructional_event.name == 'Martial Arts' %}
-                sports_martial_arts
-            {% else %} 
-                sports
-            {% endif %}
-        </span>
-        <h2>{{ instructional_event.name }}</h2>
-        <h3><a href="/classes/{{ instructional_event.id }}/edit"><span class="material-icons">edit</span></a></h3>
-    </div>
-    <div class="class-details">
-        <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
-        <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
-        <p>{{ spaces_remaining }} spaces remaining</p>
-        {% if instructional_event.min_age %}
-            <p>Over {{ instructional_event.min_age }}s</p>
-        {% endif %}
-        {% if instructional_event.gender %}
-            <p>{{ instructional_event.gender }} only</p>
-        {% endif %}
-    </div>
-</div>
-<hr class="class-separator">
-<div class="class-members">
-    {% for member in instructional_event.members %}
-        <div class="class-member">
-            <span class="material-icons">person</span>
-            <p>{{ member.first_name }}</p>
+{% block content %}
+<div class="single-container">
+    <div class="class-heading">
+        <div class="class-name">
+            <span class="material-icons">
+                {% if instructional_event.name == 'Yoga' %}
+                    self_improvement
+                {% elif instructional_event.name == 'Martial Arts' %}
+                    sports_martial_arts
+                {% else %} 
+                    sports
+                {% endif %}
+            </span>
+            <h2>{{ instructional_event.name }}</h2>
+            <h3><a href="/classes/{{ instructional_event.id }}/edit"><span class="material-icons">edit</span></a></h3>
         </div>
-    {% endfor %}
+        <div class="class-details">
+            <p>{{ instructional_event.time.__format__('%H:%M') }} - {{ instructional_event.end_time().__format__('%H:%M') }}</p>
+            <p>{{ instructional_event.time.__format__('%d/%m/%y') }}</p>
+            <p>{{ spaces_remaining }} spaces remaining</p>
+            {% if instructional_event.min_age %}
+                <p>Over {{ instructional_event.min_age }}s</p>
+            {% endif %}
+            {% if instructional_event.gender %}
+                <p>{{ instructional_event.gender }} only</p>
+            {% endif %}
+        </div>
+    </div>
+    <hr class="class-separator">
+    <div class="class-members">
+        {% for member in instructional_event.members %}
+            <div class="class-member">
+                <span class="material-icons">person</span>
+                <p>{{ member.first_name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <form action="/classes/{{ instructional_event.id }}/book" class="book-class-button">
+        <input type="submit" value="Book Class">
+    </form>
 </div>
-<form action="/classes/{{ instructional_event.id }}/book" class="book-class-button">
-    <input type="submit" value="Book Class">
-</form>
 {% endblock %}

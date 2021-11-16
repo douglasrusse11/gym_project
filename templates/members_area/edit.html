@@ -1,10 +1,10 @@
-{% extends "members/index.html" %}
+{% extends "members_area/index.html" %}
 
 {% block content %}
 <div class="single-container">
     <div class="form">
-        <h2 class="form-heading">Edit Member</h2>
-        <form action="/members/{{ member.id }}" method="post">
+        <h2 class="form-heading">Update Details</h2>
+        <form action="/members_area/{{ member.id }}" method="post">
             <div class="form-attributes">
                 <div class="form-attribute">
                     <label for="first-name">First Name:</label>
