@@ -58,11 +58,6 @@ def select_all_upcoming():
     instructional_events.sort(key=sort_by_time_key)
     return instructional_events
 
-def remove_members(instructional_event):
-    sql = "DELETE FROM bookings WHERE instructional_event_id = %s"
-    values = [instructional_event.id]
-    run_sql(sql, values)
-
 def update(instructional_event):
     sql = """UPDATE instructional_events SET (name, time, duration, capacity, min_age, gender)
              = (%(name)s, %(time)s, %(duration)s, %(capacity)s, %(min_age)s, %(gender)s) WHERE id = %(id)s"""
@@ -76,9 +71,6 @@ def update(instructional_event):
               'id': instructional_event.id
               }
     run_sql(sql, values)
-    remove_members(instructional_event)
-    for member in instructional_event.members:
-        add_member(instructional_event, member)
 
 def sort_by_time_key(instructional_event):
     return instructional_event.time
