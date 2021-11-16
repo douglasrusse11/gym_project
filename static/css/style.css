@@ -76,6 +76,10 @@ main {
     background-color: #8a8a8a;
 }
 
+.member-booked {
+    border: 4px solid #008000;
+}
+
 .members > .individual-container > .individual-container-details {
     display: flex;
     flex-direction: column;
