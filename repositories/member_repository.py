@@ -52,3 +52,20 @@ def select_all():
         member = Member(first_name, last_name, dob, email, gender, id)
         members.append(member)
     return members
+
+def select_by_name(full_name):
+    member = None
+    names = full_name.split()
+    if len(names) is not 2:
+        return member
+    sql = """SELECT * FROM members WHERE first_name = %(first_name)s
+           AND last_name = %(last_name)s"""
+    values = {
+              'first_name': names[0],
+              'last_name': names[1]
+             }
+    result = run_sql(sql, values)[0]
+    if result is not None:
+        member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], result['id'])
+    return member
+
