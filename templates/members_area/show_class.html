@@ -29,6 +29,9 @@
 </div>
 <hr class="class-separator">
 {% if member in instructional_event.members %}
+<div class="error-message">
+    <p>Already booked</p>
+</div>
 <form action="/members_area/{{ member.id }}/classes" class="book-class-button">
     <input type="submit" value="Back">
 </form>

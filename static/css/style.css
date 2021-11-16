@@ -169,9 +169,11 @@ main {
 }
 
 .error-message {
+    display: flex;
     color: red;
     font-size: 12px;
     font-style: italic;
+    justify-content: center;
 }
 
 .form {
