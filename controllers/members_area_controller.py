@@ -34,6 +34,7 @@ def edit_member(id):
 def show_eligible_classes(id):
     member = member_repository.select(id)
     instructional_events = member_repository.eligible_classes(member)
+    instructional_events.sort(key=instructional_event_repository.sort_by_time_key)
     return render_template("members_area/show_all_classes.html", member=member, instructional_events=instructional_events)
 
 @members_area_blueprint.route('/members_area/<member_id>/classes/<instructional_event_id>')
