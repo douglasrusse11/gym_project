@@ -258,6 +258,8 @@ footer {
     .single-container {
         width: 95%;
         height: 450px;
+        padding: 10px;
+        padding-top: 50px
     }
 
     .form-attributes {
@@ -286,5 +288,11 @@ footer {
 
     .individual-container {
         width: 95%;
+    }
+
+    .attribution {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
     }
 }
