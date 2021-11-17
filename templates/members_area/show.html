@@ -11,7 +11,11 @@
         <div class="member-details">
             <p>{{ member.dob.__format__('%d/%m/%Y') }}</p>
             <p>{{ member.email}}</p>
-            <p>{{ member.gender}}</p>
+            {% if member.gender %}
+                <p>{{ member.gender}}</p>
+            {% else %}
+                <p>N/A</p>
+            {% endif %}
         </div>
     </div>
 </div>
