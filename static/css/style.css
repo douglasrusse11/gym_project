@@ -295,4 +295,9 @@ footer {
         flex-direction: column;
         width: 280px;
     }
+
+    .member-heading, .class-heading {
+        display: flex;
+        flex-direction: column;
+    }
 }
