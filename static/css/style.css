@@ -65,6 +65,7 @@ main {
 .individual-container {
     color: #ffffff;
     background-color: #000000;
+    border: 4px solid #000000;
     border-radius: 10px;
     width: 265px;
     padding: 10px;
@@ -74,6 +75,7 @@ main {
 .fully-booked {
     color: #c4c4c4;
     background-color: #8a8a8a;
+    border: 4px solid #c4c4c4;
 }
 
 .member-booked {
@@ -256,11 +258,24 @@ footer {
     .single-container {
         width: 95%;
         height: 450px;
+        padding: 10px;
+        padding-top: 50px
+    }
+
+    .form-attributes {
+        display: flex;
+        flex-direction: column;
     }
 
     .form-attribute {
+        width: 220.19px;
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: baseline;
+    }
+
+    .form-attribute > input, .form-attribute > select {
+        margin: 0px;
     }
 
     .form-button {
@@ -273,5 +288,11 @@ footer {
 
     .individual-container {
         width: 95%;
+    }
+
+    .attribution {
+        display: flex;
+        flex-direction: column;
+        width: 280px;
     }
 }

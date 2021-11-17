@@ -4,7 +4,7 @@
 <div class="multi-container">
 <section class="classes">
     {% for instructional_event in instructional_events %}
-        <div class="individual-container {% if not instructional_event.has_capacity() %} fully-booked {% elif member in instructional_event.members %} member-booked {% endif %}">
+        <div class="individual-container {% if not instructional_event.has_capacity() %} fully-booked {% endif %}{% if member in instructional_event.members %} member-booked {% endif %}">
             <div class="individual-container-heading">
                 <div class="individual-container-name">
                     <a href="/members_area/{{ member.id }}/classes/{{ instructional_event.id }}">
