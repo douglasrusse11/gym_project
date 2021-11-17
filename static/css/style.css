@@ -299,5 +299,6 @@ footer {
     .member-heading, .class-heading {
         display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
     }
 }
