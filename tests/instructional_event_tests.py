@@ -5,7 +5,7 @@ from datetime import datetime, date
 
 class TestInstructionalEvent(unittest.TestCase):
     def setUp(self):
-        self.instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 12, 18), 90)
+        self.instructional_event1 = InstructionalEvent("Yoga", datetime(2021, 11, 12, 18), 90, None)
         self.member = Member("Augusta", "Eldrick", date(1997, 5, 19), "crobles@yahoo.ca")
         self.instructional_event2 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, 5, id=1)
         self.instructional_event3 = InstructionalEvent("Martial Arts", datetime(2021, 11, 12, 19), 60, 5, 40, "Female", 2)
