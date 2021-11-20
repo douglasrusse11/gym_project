@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.member import Member
 from repositories import instructional_event_repository
+from datetime import datetime
 
 def save(member):
     sql = """INSERT INTO members (first_name, last_name, dob, email, gender)
@@ -75,10 +76,12 @@ def eligible_classes(member):
     conditional = False
     sql = """SELECT * FROM instructional_events
              WHERE (gender = %(gender)s OR gender IS NULL)
-             AND (min_age < %(age)s OR min_age IS NULL)"""
+             AND (min_age < %(age)s OR min_age IS NULL)
+             AND time > %(now)s"""
     values = {
               'gender': member.gender,
-              'age': member.age()
+              'age': member.age(),
+              'now': datetime.now()
               }
     results = run_sql(sql, values)
     for result in results:
