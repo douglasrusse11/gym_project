@@ -87,31 +87,16 @@ def select(id):
 
 def eligible_members(instructional_event):
     members = []
-    conditional = False
     if instructional_event.has_capacity():
-        sql = "SELECT * FROM members"
-        values = {}
-        if instructional_event.members != []:
-            conditional = True
-            sql += " WHERE id NOT IN %(members_id_list)s"
-            values['members_id_list'] = tuple([member.id for member in instructional_event.members])
+        sql = "SELECT * FROM members WHERE id NOT IN %(members_id_list)s"
+        values = {'members_id_list': (-1, ) if instructional_event.members == [] else tuple([member.id for member in instructional_event.members])}
         if instructional_event.min_age:
-            if conditional:
-                sql += " AND"
-            else: 
-                sql += " WHERE"
-                conditional = True
             today = date.today()
             max_dob = today.replace(year=today.year-instructional_event.min_age)
-            sql += " members.dob < %(max_dob)s"
+            sql += " AND members.dob < %(max_dob)s"
             values["max_dob"] = max_dob
         if instructional_event.gender:
-            if conditional:
-                sql += " AND"
-            else: 
-                sql += " WHERE"
-                conditional = True
-            sql += " gender = %(instructional_event_gender)s"
+            sql += " AND gender = %(instructional_event_gender)s"
             values["instructional_event_gender"] = instructional_event.gender
         results = run_sql(sql, values)
         if results is not None:
