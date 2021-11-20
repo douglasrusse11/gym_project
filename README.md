@@ -19,6 +19,8 @@ A local gym has asked you to build a piece of software to help them to manage me
 #### Instructions
 - Clone the repository <code>git clone git@github.com:douglasrusse11/gym_project.git</code>
 - Navigate to the repository <code>cd gym_project</code>
+- Create a database <code>createdb gym</code>
+- Link the database <code>psql -d gym -f db/gym.sql</code>
 - Run the app <code>flask run</code>
 
 #### Dependencies
