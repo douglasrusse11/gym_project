@@ -66,8 +66,9 @@ def select_by_name(full_name):
               'first_name': names[0],
               'last_name': names[1]
              }
-    result = run_sql(sql, values)[0]
-    if result is not None:
+    results = run_sql(sql, values)
+    if results != []:
+        result = results[0]
         member = Member(result['first_name'], result['last_name'], result['dob'], result['email'], result['gender'], result['id'])
     return member
 
